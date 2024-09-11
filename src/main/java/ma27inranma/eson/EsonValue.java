@@ -51,4 +51,13 @@ public class EsonValue {
   public boolean isString(){
     return this.type == EsonType.String;
   }
+
+  
+  public String toString(){
+    if(value instanceof String){
+      return "\"" + value + "\"";
+    }
+
+    return value.toString();
+  }
 }
