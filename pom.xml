@@ -27,7 +27,7 @@
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
                         <manifest>
-                            <mainClass>ma27inranma.test.Main</mainClass>
+                            <mainClass>ma27inranma.test.EsonTestEntry</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

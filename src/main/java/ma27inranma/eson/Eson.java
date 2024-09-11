@@ -6,8 +6,6 @@ public class Eson {
   public static EsonValue parse(EsonText text, EsonType type){
     EsonType esonType = type;
 
-    System.out.println("processing \"" + text.text + "\"");
-
     if(esonType == null){
       if(text.text.charAt(0) == '{'){
         esonType = EsonType.Compound;
@@ -48,12 +46,10 @@ public class Eson {
         EsonRange valueRange = getRealRange(keyValue.text.substring(eqlPos + 1));
 
         String key = keyValue.text.substring(keyRange.start, keyRange.end).trim();
-        System.out.println("compound, key: \"" + key + "\" keyvalue: \"" + keyValue.text + "\""); 
         keyValue.substring(eqlPos + 1);
         String value = keyValue.text.substring(valueRange.start, valueRange.end).trim();
 
         map.put(key, parse(new EsonText(value), null));
-        System.out.println("compound, parse result type: " + map.get(key).getType() + " value: " + map.get(key).getValue());
       }
 
       return new EsonValue(EsonType.Compound, map);
