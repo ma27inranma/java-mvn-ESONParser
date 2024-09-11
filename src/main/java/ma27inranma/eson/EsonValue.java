@@ -20,11 +20,20 @@ public class EsonValue {
   }
 
   public EsonValue get(String key){
+    return get(key, false);
+  }
+
+  public EsonValue get(String key, boolean useEsonNull){
     if(!isCompound()){
       throw new IllegalArgumentException("Value is not a compound");
     }
 
-    return ((Map<String, EsonValue>)value).get(key);
+    EsonValue res = ((Map<String, EsonValue>)value).get(key);
+    if(res == null && useEsonNull){
+      return new EsonValue(EsonType.Null, null);
+    }
+
+    return res;
   }
 
 
@@ -56,6 +65,8 @@ public class EsonValue {
   public String toString(){
     if(value instanceof String){
       return "\"" + value + "\"";
+    }else if(value == null){
+      return "Null";
     }
 
     return value.toString();

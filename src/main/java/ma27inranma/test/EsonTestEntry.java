@@ -11,5 +11,6 @@ public class EsonTestEntry {
     
     System.out.println(value);
     System.out.println(value.get("testkey").get("testvaluekey"));
+    System.out.println(value.get("testkey").get("not_found_key", true));
   }
 }
